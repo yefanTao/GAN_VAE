@@ -51,7 +51,7 @@ ngf = 64
 ndf = 64
 
 # Number of training epochs
-num_epochs = 5
+num_epochs = 10
 
 # Learning rate for optimizers
 lr = 0.0002
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     plt.figure(figsize=(8,8))
     plt.axis("off")
     plt.title("Training Images")
-    plt.imshow(np.transpose(vutils.make_grid(real_batch[0].to(device)[:64], padding=2, normalize=True).cpu(),(1,2,0)))
+    plt.imshow(np.transpose(vutils.make_grid(real_batch[0].to(device)[:64], padding=1, normalize=True).cpu(),(1,2,0)))
     plt.show()
 
 # custom weights initialization called on netG and netD
@@ -267,7 +267,7 @@ for epoch in range(num_epochs):
                     % (epoch, num_epochs, i, len(dataloader),
                         errD.item(), errG.item(), D_x, D_G_z1, D_G_z2))
                 batches_done = epoch * len(dataloader) + i
-                save_image(fake.data[:64], "images_faces/%d.png" % batches_done, nrow=5, normalize=True)
+                save_image(fake.data[:64], "images/%d.png" % batches_done, nrow=8, normalize=True)
 
             # Save Losses for plotting later
             G_losses.append(errG.item())
