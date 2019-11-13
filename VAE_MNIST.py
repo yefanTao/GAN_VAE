@@ -122,7 +122,7 @@ def test(epoch):
     print('====> Test set loss: {:.4f}'.format(test_loss))
 
 if __name__ == "__main__":
-    for epoch in range(1, args.epochs + 1):
+    for epoch in range(0, args.epochs + 1):
         train(epoch)
         test(epoch)
         with torch.no_grad():
